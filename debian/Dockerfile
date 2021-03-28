@@ -1,5 +1,6 @@
 FROM debian:10.8
 
+# SSH Setting
 RUN apt update && apt install -y openssh-server
 RUN mkdir /var/run/sshd
 
@@ -15,5 +16,8 @@ RUN mkdir ~/.ssh && \
     chmod 0600 ~/.ssh/authorized_keys
 
 EXPOSE 22
+
+# Vuls Setting
+RUN apt install -y reboot-notifier
 
 CMD ["/usr/sbin/sshd", "-D"]
