@@ -1,7 +1,6 @@
-FROM debian:10.8
+FROM centos:8
 
-# SSH Setting
-RUN apt update && apt install -y openssh-server
+RUN yum -y update && yum -y install openssh-server
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -15,10 +14,12 @@ RUN mkdir ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
+RUN ssh-keygen -A
+RUN rm -rf /run/nologin
+
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y reboot-notifier lsof
-RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
+RUN yum -y install yum-utils which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]
