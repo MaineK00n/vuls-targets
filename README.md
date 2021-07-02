@@ -16,6 +16,16 @@ $ docker build -t vuls-target:ubuntu -f ubuntu/Dockerfile .
 $ docker build -t vuls-target:centos -f centos/Dockerfile .
 ```
 
+- Alma Linux
+```terminal
+$ docker build -t vuls-target:alma -f alma/Dockerfile .
+```
+
+- Rocky Linux
+```terminal
+$ docker build -t vuls-target:rocky -f rocky/Dockerfile .
+```
+
 ## Usage
 ```terminal
 $ docker run -itd -p 2222:22 --name vuls-target vuls-target:[tag]
