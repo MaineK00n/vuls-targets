@@ -1,6 +1,6 @@
 FROM centos:8
 
-RUN yum -y update && yum -y install openssh-server
+RUN yum -y update && yum -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
