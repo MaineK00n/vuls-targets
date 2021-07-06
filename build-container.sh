@@ -48,3 +48,6 @@ docker build -t vuls-target:alpine3.14 -f alpine/3.14/Dockerfile .
 
 # openSUSE
 docker build -t vuls-target:opensuse_leap15 -f opensuse/leap/15/Dockerfile .
+
+# Arch Linux
+docker build -t vuls-target:archlinux -f archlinux/Dockerfile .
