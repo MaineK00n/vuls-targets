@@ -17,6 +17,12 @@ docker build -t vuls-target:centos7 -f centos/7/Dockerfile .
 docker build -t vuls-target:centos8 -f centos/8/Dockerfile .
 docker build -t vuls-target:centos_stream -f centos/stream/Dockerfile .
 
+# Fedora
+docker build -t vuls-target:fedora32 -f fedora/32/Dockerfile 
+docker build -t vuls-target:fedora33 -f fedora/33/Dockerfile 
+docker build -t vuls-target:fedora34 -f fedora/34/Dockerfile 
+docker build -t vuls-target:fedora35 -f fedora/35/Dockerfile 
+
 # Oracle Linux
 docker build -t vuls-target:oracle5 -f oracle/5/Dockerfile .
 docker build -t vuls-target:oracle6 -f oracle/6/Dockerfile .
