@@ -5,6 +5,11 @@ docker build vuls-target:debian8 -f debian/8/Dockerfile .
 docker build vuls-target:debian9 -f debian/9/Dockerfile .
 docker build vuls-target:debian10 -f debian/9/Dockerfile .
 
+# Raspbian
+raspbian/jessie/build.sh
+raspbian/stretch/build.sh
+raspbian/buster/build.sh
+
 # Ubuntu
 docker build --network host -t vuls-target:ubuntu14.04 -f ubuntu/14.04/Dockerfile .
 docker build -t vuls-target:ubuntu16.04 -f ubuntu/16.04/Dockerfile .
