@@ -32,3 +32,10 @@ docker build -t vuls-target:alma8 -f alma/8/Dockerfile .
 
 # Rocky Linux
 docker build -t vuls-target:rocky8 -f rocky/8/Dockerfile .
+
+# Alpine Linux
+docker build -t vuls-target:alpine3.10 -f alpine/3.10/Dockerfile .
+docker build -t vuls-target:alpine3.11 -f alpine/3.11/Dockerfile .
+docker build -t vuls-target:alpine3.12 -f alpine/3.12/Dockerfile .
+docker build -t vuls-target:alpine3.13 -f alpine/3.13/Dockerfile .
+docker build -t vuls-target:alpine3.14 -f alpine/3.14/Dockerfile .
