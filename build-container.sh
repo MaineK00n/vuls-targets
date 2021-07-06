@@ -23,6 +23,10 @@ docker build -t vuls-target:oracle6 -f oracle/6/Dockerfile .
 docker build -t vuls-target:oracle7 -f oracle/7/Dockerfile .
 docker build -t vuls-target:oracle8 -f oracle/8/Dockerfile .
 
+# Amazon Linux
+docker build -t vuls-target:amzn1 -f amzn/1/Dockerfile .
+docker build -t vuls-target:amzn2 -f amzn/2/Dockerfile .
+
 # AlmaLinux
 docker build -t vuls-target:alma8 -f alma/8/Dockerfile .
 
