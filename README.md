@@ -3,27 +3,27 @@
 ## support OS
 - Debian
 ```terminal
-$ docker build -t vuls-target:debian -f debian/Dockerfile .
+$ docker build --network host -t vuls-target:debian:release -f debian/:release/Dockerfile .
 ```
 
 - Ubuntu
 ```terminal
-$ docker build -t vuls-target:ubuntu -f ubuntu/Dockerfile .
+$ docker build --network host -t vuls-target:ubuntu:release -f ubuntu/:release/Dockerfile .
 ```
 
 - CentOS
 ```terminal
-$ docker build -t vuls-target:centos -f centos/Dockerfile .
+$ docker build --network host -t vuls-target:centos:release -f centos/:release/Dockerfile .
 ```
 
 - Alma Linux
 ```terminal
-$ docker build -t vuls-target:alma -f alma/Dockerfile .
+$ docker build --network host -t vuls-target:alma:release -f alma/:release/Dockerfile .
 ```
 
 - Rocky Linux
 ```terminal
-$ docker build -t vuls-target:rocky -f rocky/Dockerfile .
+$ docker build --network host -t vuls-target:rocky:release -f rocky/:release/Dockerfile .
 ```
 
 ## Usage

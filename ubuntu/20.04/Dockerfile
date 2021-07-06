@@ -1,4 +1,4 @@
-FROM debian:10.8
+FROM ubuntu:20.04
 
 # SSH Setting
 RUN apt update && apt install -y openssh-server
@@ -18,7 +18,6 @@ RUN mkdir ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y reboot-notifier lsof
-RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
+RUN apt install -y lsof iproute2 debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]
