@@ -1,6 +1,10 @@
-FROM centos:8
+FROM registry.access.redhat.com/ubi7/ubi:latest
 
-RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
+ARG RHEL_USERNAME
+ARG RHEL_PASSWORD
+
+RUN subscription-manager register --username=${RHEL_USERNAME} --password=${RHEL_PASSWORD} --autosubscribe
+RUN yum -y update && yum -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -20,6 +24,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf -y install dnf-utils which lsof
+RUN yum -y install yum-utils which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]

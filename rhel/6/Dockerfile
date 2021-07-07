@@ -1,6 +1,10 @@
-FROM centos:8
+FROM registry.access.redhat.com/rhel6/rhel:latest
 
-RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
+ARG RHEL_USERNAME
+ARG RHEL_PASSWORD
+
+RUN subscription-manager register --username=${RHEL_USERNAME} --password=${RHEL_PASSWORD} --autosubscribe
+RUN yum -y update && yum -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -14,12 +18,12 @@ RUN mkdir ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
-RUN ssh-keygen -A
+RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN rm -rf /run/nologin
 
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf -y install dnf-utils which lsof
+RUN yum -y install yum-utils which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]

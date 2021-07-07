@@ -16,6 +16,14 @@ docker build -t vuls-target:ubuntu16.04 -f ubuntu/16.04/Dockerfile .
 docker build -t vuls-target:ubuntu18.04 -f ubuntu/18.04/Dockerfile .
 docker build -t vuls-target:ubuntu20.04 -f ubuntu/20.04/Dockerfile .
 
+# RHEL
+RHEL_USERNAME=username
+RHEL_PASSWORD=password
+
+docker build -t vuls-target:rhel6 --build-arg RHEL_USERNAME=${RHEL_USERNAME} --build-arg RHEL_PASSWORD=${RHEL_PASSWORD} -f rhel/6/Dockerfile .
+docker build -t vuls-target:rhel7 --build-arg RHEL_USERNAME=${RHEL_USERNAME} --build-arg RHEL_PASSWORD=${RHEL_PASSWORD} -f rhel/7/Dockerfile .
+docker build -t vuls-target:rhel8 --build-arg RHEL_USERNAME=${RHEL_USERNAME} --build-arg RHEL_PASSWORD=${RHEL_PASSWORD} -f rhel/8/Dockerfile .
+
 # CentOS
 docker build -t vuls-target:centos6 -f centos/6/Dockerfile .
 docker build -t vuls-target:centos7 -f centos/7/Dockerfile .

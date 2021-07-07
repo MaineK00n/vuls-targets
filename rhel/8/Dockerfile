@@ -1,5 +1,9 @@
-FROM centos:8
+FROM registry.access.redhat.com/ubi8/ubi:latest
 
+ARG RHEL_USERNAME
+ARG RHEL_PASSWORD
+
+RUN subscription-manager register --username=${RHEL_USERNAME} --password=${RHEL_PASSWORD} --autosubscribe
 RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
