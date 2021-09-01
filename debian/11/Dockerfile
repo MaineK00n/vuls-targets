@@ -1,7 +1,7 @@
 FROM debian:11
 
 # SSH Setting
-RUN apt update && apt install -y openssh-server
+RUN apt update && apt install -y openssh-server iproute2
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
