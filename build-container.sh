@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Debian
-docker build vuls-target:debian8 -f debian/8/Dockerfile .
-docker build vuls-target:debian9 -f debian/9/Dockerfile .
-docker build vuls-target:debian10 -f debian/9/Dockerfile .
+docker build -t vuls-target:debian8 -f debian/8/Dockerfile .
+docker build -t vuls-target:debian9 -f debian/9/Dockerfile .
+docker build -t vuls-target:debian10 -f debian/10/Dockerfile .
+docker build -t vuls-target:debian11 -f debian/11/Dockerfile .
 
 # Raspbian
 raspbian/jessie/build.sh
