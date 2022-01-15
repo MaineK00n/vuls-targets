@@ -1,33 +1,5 @@
 # vuls-targets-docker
 
-## support OS
-- Debian
-  - 8, 9, 10
-- Raspbian
-  - jessie, stretch, buster
-- Ubuntu
-  - 14.04, 16.04, 18.04, 20.04
-- RHEL
-  - 6, 7, 8
-- CentOS
-  - 6, 7, 8
-- Fedora
-  - 32, 33, 34, 35
-- Oracle Linux
-  - 5, 6, 7, 8
-- Amazon Linux
-  - 1, 2
-- AlmaLinux
-  - 8
-- Rocky Linux
-  - 8
-- Alpine Linux
-  - 3.10, 3.11, 3.12, 3.13, 3.14
-- openSUSE
-  - leap
-    - 15
-- Arch Linux
-
 ## Usage
 ```terminal
 # For Raspbian
