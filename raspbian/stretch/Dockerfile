@@ -1,4 +1,4 @@
-FROM r/raspbian:stretch
+FROM raspbian:stretch
 
 # SSH Setting
 RUN apt update && apt install -y openssh-server

@@ -1,11 +1,6 @@
-FROM centos:8
+FROM public.ecr.aws/amazonlinux/amazonlinux:2022
 
-RUN dnf -y install centos-release-stream &&\
-    dnf -y swap centos-{linux,stream}-repos &&\
-    dnf -y distro-sync &&\
-    dnf clean all
-
-RUN yum -y update && yum -y install openssh-server glibc-langpack-en
+RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -25,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN yum -y install yum-utils which lsof
+RUN dnf -y install dnf-utils which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]

@@ -1,7 +1,6 @@
-FROM raspbian:buster
+FROM fedora:36
 
-# SSH Setting
-RUN apt update && apt install -y openssh-server
+RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -15,10 +14,12 @@ RUN mkdir ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
+RUN ssh-keygen -A
+RUN rm -rf /run/nologin
+
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y reboot-notifier lsof
-RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
+RUN dnf -y install dnf-utils which lsof iproute
 
 CMD ["/usr/sbin/sshd", "-D"]

@@ -1,4 +1,4 @@
-FROM raspbian:buster
+FROM raspios:buster
 
 # SSH Setting
 RUN apt update && apt install -y openssh-server

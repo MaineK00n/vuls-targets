@@ -1,4 +1,4 @@
-FROM r/raspbian:jessie
+FROM raspbian:jessie
 
 # SSH Setting
 RUN apt update && apt install -y openssh-server

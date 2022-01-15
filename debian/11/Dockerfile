@@ -1,7 +1,7 @@
 FROM debian:11
 
 # SSH Setting
-RUN apt update && apt install -y openssh-server iproute2
+RUN apt update && apt install -y openssh-server
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -18,7 +18,7 @@ RUN mkdir ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y reboot-notifier lsof
+RUN apt install -y reboot-notifier lsof iproute2
 RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]
