@@ -1,6 +1,7 @@
 FROM ubuntu:20.10
 
 # SSH Setting
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
 RUN apt update && apt install -y openssh-server
 RUN mkdir /var/run/sshd
 
@@ -18,6 +19,7 @@ RUN mkdir ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y lsof iproute2 debian-goodies
+RUN apt install -y lsof iproute2
+RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]

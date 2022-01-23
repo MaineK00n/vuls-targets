@@ -18,6 +18,7 @@ RUN mkdir ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y lsof iproute2 debian-goodies
+RUN apt install -y lsof iproute2
+RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]

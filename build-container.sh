@@ -18,6 +18,7 @@ raspios/buster/build.sh
 docker build --network host -t vuls-target:ubuntu14.04 -f ubuntu/14.04/Dockerfile .
 docker build -t vuls-target:ubuntu16.04 -f ubuntu/16.04/Dockerfile .
 docker build -t vuls-target:ubuntu18.04 -f ubuntu/18.04/Dockerfile .
+docker build -t vuls-target:ubuntu19.10 -f ubuntu/19.10/Dockerfile .
 docker build -t vuls-target:ubuntu20.04 -f ubuntu/20.04/Dockerfile .
 docker build -t vuls-target:ubuntu20.10 -f ubuntu/20.10/Dockerfile .
 docker build -t vuls-target:ubuntu21.04 -f ubuntu/21.04/Dockerfile .
@@ -44,7 +45,7 @@ docker build -t vuls-target:fedora32 -f fedora/32/Dockerfile
 docker build -t vuls-target:fedora33 -f fedora/33/Dockerfile 
 docker build -t vuls-target:fedora34 -f fedora/34/Dockerfile 
 docker build -t vuls-target:fedora35 -f fedora/35/Dockerfile 
-docker build -t vuls-target:fedora35 -f fedora/36/Dockerfile 
+docker build -t vuls-target:fedora36 -f fedora/36/Dockerfile 
 
 # Oracle Linux
 docker build -t vuls-target:oracle5 -f oracle/5/Dockerfile .

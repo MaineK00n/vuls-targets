@@ -1,6 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:19.10
 
 # SSH Setting
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
 RUN apt update && apt install -y openssh-server
 RUN mkdir /var/run/sshd
 
