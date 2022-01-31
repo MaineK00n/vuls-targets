@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN yum -y install yum-utils which lsof
+RUN yum -y install yum-utils which lsof iproute
 
 CMD ["/usr/sbin/sshd", "-D"]
