@@ -4,7 +4,7 @@ ARG RHEL_USERNAME
 ARG RHEL_PASSWORD
 
 RUN subscription-manager register --username=${RHEL_USERNAME} --password=${RHEL_PASSWORD} --autosubscribe
-RUN dnf -y update && dnf -y install openssh-server glibc-langpack-en
+RUN dnf -y upgrade && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
