@@ -19,4 +19,7 @@ RUN rm -rf /run/nologin
 
 EXPOSE 22
 
+# Vuls Setting
+RUN zypper install --no-confirm which lsof iproute2
+
 CMD ["/usr/sbin/sshd", "-D"]
