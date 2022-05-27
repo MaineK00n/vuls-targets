@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM almalinux:9
 
 RUN dnf -y upgrade && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf -y install dnf-utils which lsof iproute
+RUN dnf -y install dnf-utils which lsof procps-ng iproute
 
 CMD ["/usr/sbin/sshd", "-D"]

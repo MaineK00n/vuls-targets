@@ -1,4 +1,4 @@
-FROM rockylinux:8
+FROM rockylinux:9
 
 RUN dnf -y upgrade && dnf -y install openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
@@ -21,5 +21,11 @@ EXPOSE 22
 
 # Vuls Setting
 RUN dnf -y install dnf-utils which lsof iproute
+
+# EPEL
+RUN dnf -y install 'dnf-command(config-manager)' && dnf config-manager --set-enabled powertools
+RUN dnf -y install epel-release
+# FEDORA-EPEL-2021-3c32bc85f8 CVE-2021-36367
+RUN dnf -y install https://dl.fedoraproject.org/pub/archive/epel/8.3/Everything/x86_64/Packages/p/putty-0.74-4.el8.x86_64.rpm
 
 CMD ["/usr/sbin/sshd", "-D"]
