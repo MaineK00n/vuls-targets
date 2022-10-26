@@ -24,6 +24,7 @@ docker build -t vuls-target:ubuntu20.10 -f ubuntu/20.10/Dockerfile .
 docker build -t vuls-target:ubuntu21.04 -f ubuntu/21.04/Dockerfile .
 docker build -t vuls-target:ubuntu21.10 -f ubuntu/21.10/Dockerfile .
 docker build -t vuls-target:ubuntu22.04 -f ubuntu/22.04/Dockerfile .
+docker build -t vuls-target:ubuntu22.10 -f ubuntu/22.10/Dockerfile .
 
 # RHEL
 RHEL_USERNAME=username
