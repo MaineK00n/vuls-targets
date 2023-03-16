@@ -25,6 +25,7 @@ docker build -t vuls-target:ubuntu21.04 -f ubuntu/21.04/Dockerfile .
 docker build -t vuls-target:ubuntu21.10 -f ubuntu/21.10/Dockerfile .
 docker build -t vuls-target:ubuntu22.04 -f ubuntu/22.04/Dockerfile .
 docker build -t vuls-target:ubuntu22.10 -f ubuntu/22.10/Dockerfile .
+docker build -t vuls-target:ubuntu23.04 -f ubuntu/23.04/Dockerfile .
 
 # RHEL
 RHEL_USERNAME=username
@@ -58,6 +59,7 @@ docker build -t vuls-target:oracle8 -f oracle/8/Dockerfile .
 docker build -t vuls-target:amzn1 -f amzn/1/Dockerfile .
 docker build -t vuls-target:amzn2 -f amzn/2/Dockerfile .
 docker build -t vuls-target:amzn2022 -f amzn/2022/Dockerfile .
+docker build -t vuls-target:amzn2023 -f amzn/2023/Dockerfile .
 
 # AlmaLinux
 docker build -t vuls-target:alma8 -f alma/8/Dockerfile .
@@ -72,6 +74,8 @@ docker build -t vuls-target:alpine3.12 -f alpine/3.12/Dockerfile .
 docker build -t vuls-target:alpine3.13 -f alpine/3.13/Dockerfile .
 docker build -t vuls-target:alpine3.14 -f alpine/3.14/Dockerfile .
 docker build -t vuls-target:alpine3.15 -f alpine/3.15/Dockerfile .
+docker build -t vuls-target:alpine3.16 -f alpine/3.16/Dockerfile .
+docker build -t vuls-target:alpine3.17 -f alpine/3.17/Dockerfile .
 
 # openSUSE
 docker build -t vuls-target:opensuse_leap15 -f opensuse/leap/15/Dockerfile .
