@@ -1,7 +1,7 @@
 FROM raspbian:jessie
 
 # SSH Setting
-RUN apt update && apt install -y openssh-server
+RUN apt update && apt-get install -y openssh-server
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -17,8 +17,8 @@ RUN mkdir ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-# RUN apt install -y reboot-notifier
-RUN apt install -y lsof
-RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
+# RUN apt-get install -y reboot-notifier
+RUN apt-get install -y lsof
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]
