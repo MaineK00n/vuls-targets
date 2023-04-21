@@ -1,7 +1,7 @@
 FROM ubuntu:23.04
 
 # SSH Setting
-RUN apt update && apt install -y openssh-server
+RUN apt update && apt-get install -y openssh-server
 RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -11,14 +11,14 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 COPY .ssh/id_rsa.pub /root/authorized_keys
-RUN mkdir ~/.ssh && \
+RUN mkdir -p ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
 EXPOSE 22
 
 # Vuls Setting
-RUN apt install -y lsof iproute2
-RUN DEBIAN_FRONTEND=noninteractive apt install -y debian-goodies
+RUN apt-get install -y lsof iproute2
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]
