@@ -11,7 +11,7 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 COPY .ssh/id_rsa.pub /root/authorized_keys
-RUN mkdir ~/.ssh && \
+RUN mkdir -p ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
