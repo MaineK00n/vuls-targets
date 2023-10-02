@@ -1,7 +1,8 @@
-FROM registry.suse.com/suse/sle15:15.4
+FROM ubuntu:23.10
 
-RUN zypper update --no-confirm && zypper install --no-confirm openssh
-RUN mkdir /var/run/sshd
+# SSH Setting
+RUN apt update && apt-get install -y openssh-server
+RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -14,9 +15,10 @@ RUN mkdir -p ~/.ssh && \
     mv ~/authorized_keys ~/.ssh/authorized_keys && \
     chmod 0600 ~/.ssh/authorized_keys
 
-RUN ssh-keygen -A
-RUN rm -rf /run/nologin
-
 EXPOSE 22
+
+# Vuls Setting
+RUN apt-get install -y lsof iproute2
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]

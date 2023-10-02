@@ -1,4 +1,4 @@
-FROM registry.suse.com/suse/sle15:15.4
+FROM opensuse/leap:15.5
 
 RUN zypper update --no-confirm && zypper install --no-confirm openssh
 RUN mkdir /var/run/sshd
@@ -18,5 +18,8 @@ RUN ssh-keygen -A
 RUN rm -rf /run/nologin
 
 EXPOSE 22
+
+# Vuls Setting
+RUN zypper install --no-confirm which lsof iproute2
 
 CMD ["/usr/sbin/sshd", "-D"]
