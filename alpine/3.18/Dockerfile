@@ -1,10 +1,9 @@
-FROM registry.suse.com/suse/sle15:15.4
+FROM alpine:3.18
 
-RUN zypper update --no-confirm && zypper install --no-confirm openssh
+RUN apk add --no-cache openssh-server
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
@@ -15,7 +14,7 @@ RUN mkdir -p ~/.ssh && \
     chmod 0600 ~/.ssh/authorized_keys
 
 RUN ssh-keygen -A
-RUN rm -rf /run/nologin
+RUN echo 'root:root'|chpasswd
 
 EXPOSE 22
 
