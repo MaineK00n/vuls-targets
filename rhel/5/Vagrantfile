@@ -12,12 +12,8 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "generic/rhel8"
-  config.vm.box_version = "4.3.8"
-
-  config.trigger.before :destroy do |trigger|
-    trigger.run_remote = {inline: "sudo subscription-manager unregister"}
-  end
+  config.vm.box = "carlba/rhel-5.8"
+  config.vm.box_version = "0.1"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -49,6 +45,13 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Disable the default share of the current code directory. Doing this
+  # provides improved isolation between the vagrant box and your host
+  # by making sure your Vagrantfile isn't accessible to the vagrant box.
+  # If you use this you may want to enable additional shared subfolders as
+  # shown above.
+  # config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -89,11 +92,11 @@ Vagrant.configure("2") do |config|
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
-  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  config.vm.provision "shell", inline: <<-SHELL
+   config.vm.provision "shell", inline: <<-SHELL
     subscription-manager register --username=#{ENV['RHEL_USERNAME']} --password=#{ENV['RHEL_PASSWORD']} --autosubscribe --force
-
-    dnf install -y openssh-server glibc-langpack-en dnf-utils which lsof iproute
+  
+    yum install -y openssh-server glibc-langpack-en yum-utils which lsof iproute
   SHELL
 end
