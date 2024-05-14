@@ -7,8 +7,6 @@
 $ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 $ docker build --network host -t vuls-target:[os:release] -f [:os/:release]/Dockerfile .
-or
-$ ./build-container.sh
 
 $ docker run -itd -p 2222:22 --name vuls-target vuls-target:[tag]
 $ ssh-keygen -f "$HOME/.ssh/known_hosts" -R "[127.0.0.1]:2222" && ssh -i vuls-targets-docker/.ssh/id_rsa -p 2222 root@127.0.0.1
