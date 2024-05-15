@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:15.10
 
 # SSH Setting
 RUN apt-get update && apt-get install -y openssh-server
