@@ -1,4 +1,4 @@
-FROM fedora:40
+FROM fedora:25
 
 RUN dnf upgrade -y && dnf install -y openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf install -y dnf-utils which lsof iproute
+RUN dnf install -y dnf-utils which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]

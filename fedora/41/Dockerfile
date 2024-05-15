@@ -1,4 +1,4 @@
-FROM fedora:40
+FROM fedora:41
 
 RUN dnf upgrade -y && dnf install -y openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
