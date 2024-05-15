@@ -1,4 +1,4 @@
-FROM debian:12
+FROM debian:6
 
 # SSH Setting
 RUN apt-get update && apt-get install -y openssh-server
@@ -18,7 +18,8 @@ RUN mkdir -p ~/.ssh && \
 EXPOSE 22
 
 # Vuls Setting
-RUN apt-get install -y reboot-notifier lsof iproute2
+# RUN apt-get install -y reboot-notifier
+RUN apt-get install -y lsof
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y debian-goodies
 
 CMD ["/usr/sbin/sshd", "-D"]
