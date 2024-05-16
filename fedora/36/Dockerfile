@@ -1,6 +1,6 @@
 FROM fedora:36
 
-RUN dnf -y upgrade && dnf -y install openssh-server glibc-langpack-en
+RUN dnf upgrade -y && dnf install -y openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf -y install dnf-utils which lsof iproute
+RUN dnf install -y dnf-utils which lsof iproute
 
 CMD ["/usr/sbin/sshd", "-D"]
