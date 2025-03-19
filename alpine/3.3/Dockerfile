@@ -1,7 +1,7 @@
 FROM alpine:3.3
 
 RUN apk add --no-cache openssh-server
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 

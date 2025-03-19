@@ -95,6 +95,6 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    dnf install -y openssh-server glibc-langpack-en which lsof iproute
+    dnf install -y openssh-server glibc-langpack-en dnf-utils which lsof procps-ng iproute
   SHELL
 end

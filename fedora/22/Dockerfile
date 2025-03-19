@@ -1,7 +1,7 @@
 FROM fedora:22
 
-RUN dnf upgrade -y && dnf install -y openssh-server glibc-langpack-en
-RUN mkdir /var/run/sshd
+RUN dnf upgrade -y && dnf install -y openssh-server
+RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -23,3 +23,5 @@ EXPOSE 22
 RUN dnf install -y 'dnf-command(repoquery)' which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]
+
+# TODO: failed to connect with ssh key
