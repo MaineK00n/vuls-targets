@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf install -y dnf-utils which lsof
+RUN dnf install -y 'dnf-command(repoquery)' which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]
