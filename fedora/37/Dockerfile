@@ -1,7 +1,7 @@
 FROM fedora:37
 
 RUN dnf upgrade -y && dnf install -y openssh-server glibc-langpack-en
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf install -y which lsof iproute
+RUN dnf install -y dnf-utils which lsof procps-ng iproute
 
 CMD ["/usr/sbin/sshd", "-D"]

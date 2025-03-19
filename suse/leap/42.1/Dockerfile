@@ -1,7 +1,7 @@
 FROM opensuse/archive:42.1
 
 RUN zypper update --no-confirm && zypper install --no-confirm openssh
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' /etc/pam.d/sshd
