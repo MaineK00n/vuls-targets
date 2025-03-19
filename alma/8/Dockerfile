@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf install -y dnf-utils which lsof procps-ng iproute
+RUN dnf install -y which lsof procps-ng iproute
 
 CMD ["/usr/sbin/sshd", "-D"]

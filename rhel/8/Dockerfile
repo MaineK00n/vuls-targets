@@ -24,6 +24,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN dnf install -y dnf-utils which lsof iproute
+RUN dnf install -y which lsof iproute
 
 CMD ["/usr/sbin/sshd", "-D"]

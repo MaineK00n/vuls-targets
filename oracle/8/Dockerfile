@@ -1,6 +1,6 @@
 FROM oraclelinux:8
 
-RUN yum update -y && yum install -y openssh-server glibc-langpack-en
+RUN dnf update -y && dnf install -y openssh-server glibc-langpack-en
 RUN mkdir /var/run/sshd
 
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
@@ -20,6 +20,6 @@ RUN rm -rf /run/nologin
 EXPOSE 22
 
 # Vuls Setting
-RUN yum install -y yum-utils which lsof
+RUN dnf install -y which lsof
 
 CMD ["/usr/sbin/sshd", "-D"]
