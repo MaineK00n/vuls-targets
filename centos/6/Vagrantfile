@@ -95,10 +95,9 @@ Vagrant.configure("2") do |config|
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    sed -i "s|#baseurl=|baseurl=|g" /etc/yum.repos.d/CentOS-Base.repo
-    sed -i "s|mirrorlist=|#mirrorlist=|g" /etc/yum.repos.d/CentOS-Base.repo
-    sed -i "s|http://mirror\.centos\.org/centos/\$releasever|https://vault\.centos\.org/6.10|g" /etc/yum.repos.d/CentOS-Base.repo
+    awk '{print $3}' /etc/centos-release > /etc/yum/vars/releasever
+    sed -i -e 's/^mirrorlist/#mirrorlist/g' -e 's/^#baseurl=http:\/\/mirror/baseurl=http:\/\/vault/g' /etc/yum.repos.d/CentOS-*.repo
 
-    yum install -y openssh-server glibc-langpack-en yum-utils which lsof
+    yum install -y openssh-server glibc-langpack-en yum-utils which lsof procps iproute
   SHELL
 end
