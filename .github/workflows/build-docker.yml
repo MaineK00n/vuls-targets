@@ -12,7 +12,7 @@ on:
 
 jobs:
     build:
-        name: Build ghcr.io/${{ github.repository }}:${{ inputs.tag }} by ${{ inputs.path }}
+        name: Build ghcr.io/mainek00n/vuls-targets:${{ inputs.tag }} by ${{ inputs.path }}
         runs-on: ubuntu-latest
         steps:
             - name: Check out code into the Go module directory
@@ -34,4 +34,4 @@ jobs:
                   context: .
                   file: ${{ inputs.path }}
                   push: true
-                  tags: ghcr.io/${{ github.repository }}:${{ inputs.tag }}
+                  tags: ghcr.io/mainek00n/vuls-targets:${{ inputs.tag }}
